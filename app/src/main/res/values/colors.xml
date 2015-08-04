@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_primary_cold">#03A9F4</color>
+    <color name="color_secondary_cold">#0288D1</color>
+    <color name="color_accent_cold">#536DFE</color>
+
+    <color name="color_primary_warm">#FF9800</color>
+    <color name="color_secondary_warm">#F57C00</color>
+    <color name="color_accent_warm">#FF5722</color>
+
+    <color name="color_primary_hot">#F44336</color>
+    <color name="color_secondary_hot">#D32F2F</color>
+    <color name="color_accent_hot">#FF5722</color>
+
+    <color name="color_primary_freezing">#607D8B</color>
+    <color name="color_secondary_freezing">#455A64</color>
+    <color name="color_accent_freezing">#00BCD4</color>
+    
+    <color name="primary_text">#212121</color>
+    <color name="transparent_black">#42000000</color>
+    <color name="text_and_icons">#FFFFFF</color>
+
+
+</resources>
