@@ -1,46 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.NoActionBar">
+    <style name="AppTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowContentOverlay">@null</item>
         <item name="android:textColor">@color/text_and_icons</item>
-        <item name="android:statusBarColor">@color/transparent_black</item>
-        <item name="android:navigationBarColor">@color/transparent_black</item>
-
     </style>
 
-<style name="freezing" parent="AppTheme">
-<item name="android:colorPrimary">@color/color_primary_freezing</item>
-<item name="android:colorPrimaryDark">@color/color_secondary_freezing</item>
-<item name="android:colorAccent">@color/color_accent_freezing</item>
-<!--<item name="android:statusBarColor">@color/color_secondary_freezing</item>
-<item name="android:navigationBarColor">@color/color_secondary_freezing</item>-->
-        <item name="android:colorBackground">@color/color_primary_freezing</item>
+    <style name="TranslucentActionBar" parent="@android:style/Widget.Material.ActionBar">
+        <item name="android:textColorPrimary">@color/text_and_icons</item>
     </style>
-
-    <style name="cold" parent="AppTheme">
-        <item name="android:colorPrimary">@color/color_primary_cold</item>
-        <item name="android:colorPrimaryDark">@color/color_secondary_cold</item>
-        <item name="android:colorAccent">@color/color_accent_cold</item>
-        <!--<item name="android:statusBarColor">@color/color_secondary_cold</item>
-        <item name="android:navigationBarColor">@color/color_secondary_cold</item>-->
-        <item name="android:colorBackground">@color/color_primary_cold</item>
-    </style>
-
-    <style name="warm" parent="AppTheme">
-        <item name="android:colorPrimary">@color/color_primary_warm</item>
-        <item name="android:colorPrimaryDark">@color/color_secondary_warm</item>
-        <item name="android:colorAccent">@color/color_accent_warm</item>
-        <!--<item name="android:statusBarColor">@color/color_secondary_warm</item>
-        <item name="android:navigationBarColor">@color/color_secondary_warm</item>-->
-        <item name="android:colorBackground">@color/color_primary_warm</item>
-    </style>
-
-    <style name="hot" parent="AppTheme">
-        <item name="android:colorPrimary">@color/color_primary_hot</item>
-        <item name="android:colorPrimaryDark">@color/color_secondary_hot</item>
-        <item name="android:colorAccent">@color/color_accent_hot</item>
-        <!--<item name="android:statusBarColor">@color/color_secondary_hot</item>
-        <item name="android:navigationBarColor">@color/color_secondary_hot</item>-->
-        <item name="android:colorBackground">@color/color_primary_hot</item>
-    </style>
-
 </resources>

@@ -18,18 +18,32 @@ public class Weather {
 
     MainActivity mainActivity;
     String ID;
+    private float temp;
 
     public Weather(MainActivity context){
         mainActivity = context;
     }
 
-    public void getTemp(double lat, double lon){
+    public void getWeather(double lat, double lon){
         ID = "TEMP";
         lat = Double.valueOf(String.valueOf(lat).substring(0, 5));
         lon = Double.valueOf(String.valueOf(lon).substring(0, 5));
 
         String url = "http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/" + lat + "/lon/" + lon + "/data.json";
         AsyncTask task = new DownloadFilesTask().execute(url);
+    }
+
+    public void getWeatherNew(double lat, double lon){
+        ID = "TEMP";
+        lat = Double.valueOf(String.valueOf(lat).substring(0, 5));
+        lon = Double.valueOf(String.valueOf(lon).substring(0, 5));
+
+        String url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=60a2ddd82f61b00813d4526099b05a71";
+        AsyncTask task = new DownloadFilesTask().execute(url);
+    }
+
+    public float gettmp() {
+        return temp;
     }
 
     public void getLocation(double lat, double lon){
@@ -85,6 +99,13 @@ public class Weather {
             }
             if(ID.equals("LOCATION")){
                 mainActivity.updateLocation(result);
+            }
+            if(ID.equals("NEW-TEMP")){
+                try {
+                    temp = result.getJSONObject("main").getLong("temp");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

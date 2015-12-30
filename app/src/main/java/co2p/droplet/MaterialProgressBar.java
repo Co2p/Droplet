@@ -22,7 +22,7 @@ public class MaterialProgressBar extends View {
     public MaterialProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        mDrawable = new CircularProgressDrawable(Color.parseColor("#FFFFFF"), 12);
+        mDrawable = new CircularProgressDrawable(Color.parseColor("#FFFFFF"), 20);
         mDrawable.setCallback(this);
         if (getVisibility() == VISIBLE) {
             mDrawable.start();
