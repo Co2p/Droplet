@@ -46,15 +46,9 @@ public class Weather {
         return temp;
     }
 
-    public void getLocation(double lat, double lon){
+    public void getLocation(double lat, double lon) {
         ID = "LOCATION";
-        String url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&sensor=true";
-        AsyncTask task = new DownloadFilesTask().execute(url);
-    }
-
-    public void getLocationNew(double lat, double lon) {
-        ID = "LOCATION";
-        String url = "        http://api.geonames.org/findNearbyPlaceName?lat=" + lat + "&lng=" + lon + "&username=drop";
+        String url = "http://api.geonames.org/findNearbyPlaceName?lat=" + lat + "&lng=" + lon + "&username=drop";
         AsyncTask task = new DownloadFilesTask().execute(url);
     }
 
@@ -104,7 +98,8 @@ public class Weather {
                 mainActivity.updateTemperature(result);
             }
             else if(ID.equals("LOCATION")){
-                mainActivity.updateLocation(result);
+                System.out.println("placename:" + result);
+                mainActivity.updateLocation(String.valueOf(result));
             }
             else if(ID.equals("NEW-TEMP")){
                 try {

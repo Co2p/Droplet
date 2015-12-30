@@ -218,19 +218,12 @@ public class MainActivity extends Activity {
         anim.start();
     }
 
-    public void updateLocation(JSONObject object){
-        String locationS = "";
-        try {
-            locationS = String.valueOf(object.getJSONArray("results").getJSONObject(2).getJSONArray("address_components").getJSONObject(0).get("short_name"));
-            System.out.println(locationS);
-            location_text.setText(locationS);
-        } catch (JSONException e) {
-            System.out.println(object);
-            location_text.setText("Error finding location");
-            e.printStackTrace();
+    public void updateLocation(String placename){
+        if (placename.equals("null")) {
+            location_text.setText("Nowhere, middle of");
         }
-
-
+        else
+            location_text.setText(placename.split(" ")[0]);
     }
 
     private String[] simplifyWeather(JSONArray w) throws JSONException {
