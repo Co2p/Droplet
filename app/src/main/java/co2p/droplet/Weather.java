@@ -52,6 +52,12 @@ public class Weather {
         AsyncTask task = new DownloadFilesTask().execute(url);
     }
 
+    public void getLocationNew(double lat, double lon) {
+        ID = "LOCATION";
+        String url = "        http://api.geonames.org/findNearbyPlaceName?lat=" + lat + "&lng=" + lon + "&username=drop";
+        AsyncTask task = new DownloadFilesTask().execute(url);
+    }
+
     class DownloadFilesTask extends AsyncTask<String, Integer, JSONObject> {
 
         /**
@@ -97,10 +103,10 @@ public class Weather {
             if(ID.equals("TEMP")){
                 mainActivity.updateTemperature(result);
             }
-            if(ID.equals("LOCATION")){
+            else if(ID.equals("LOCATION")){
                 mainActivity.updateLocation(result);
             }
-            if(ID.equals("NEW-TEMP")){
+            else if(ID.equals("NEW-TEMP")){
                 try {
                     temp = result.getJSONObject("main").getLong("temp");
                 } catch (JSONException e) {

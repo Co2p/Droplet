@@ -225,8 +225,8 @@ public class MainActivity extends Activity {
             System.out.println(locationS);
             location_text.setText(locationS);
         } catch (JSONException e) {
-            location_text.setText("Error finding location");
             System.out.println(object);
+            location_text.setText("Error finding location");
             e.printStackTrace();
         }
 
