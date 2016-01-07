@@ -1,14 +1,11 @@
 package co2p.droplet;
 
 import android.util.Xml;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 /**
  * Created by gordon on 06/01/16.
@@ -18,7 +15,7 @@ public class XMLParser {
     // We don't use namespaces
     private static final String ns = null;
 
-    public List parse(InputStream in) throws XmlPullParserException, IOException {
+    public Weather parse(InputStream in) throws XmlPullParserException, IOException {
         try {
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
@@ -30,117 +27,40 @@ public class XMLParser {
         }
     }
 
-    private List readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
-        List entries = new ArrayList();
+    private Weather readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
+        String name;
+        Calendar c = Calendar.getInstance();
+        String current_time = c.get(Calendar.YEAR) + "-" + pad(c.get(Calendar.MONTH) + 1) + "-" +
+                pad(c.get(Calendar.DAY_OF_MONTH)) + "T" + pad(c.get(Calendar.HOUR_OF_DAY)) + ":00:00Z";
 
-        parser.require(XmlPullParser.START_TAG, ns, "feed");
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            // Starts by looking for the entry tag
-            if (name.equals("entry")) {
-                entries.add(readEntry(parser));
-            } else {
-                skip(parser);
-            }
-        }
-        return entries;
-    }
 
-    private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
-        if (parser.getEventType() != XmlPullParser.START_TAG) {
-            throw new IllegalStateException();
-        }
-        int depth = 1;
-        while (depth != 0) {
-            switch (parser.next()) {
-                case XmlPullParser.END_TAG:
-                    depth--;
-                    break;
-                case XmlPullParser.START_TAG:
-                    depth++;
-                    break;
+        parser.require(XmlPullParser.START_TAG, ns, "weatherdata");
+        while (parser.next() != XmlPullParser.END_DOCUMENT) {
+            name = parser.getName();
+            if (name != null && name.equals("time")) {
+                String time = parser.getAttributeValue(null, "from");
+
+                if (time != null && time.contains(current_time)) {
+                    p.rint("time is: " + current_time);
+                    p.rint("testing time: " + time);
+                    while (parser.next() != XmlPullParser.END_TAG) {
+                        name = parser.getName();
+                        if (name != null && name.equals("temperature")) {
+                            String temperature = parser.getAttributeValue(null, "value");
+                            //p.rint("temp: " +  temperature);
+                            return new Weather(temperature, null, null);
+                        }
+                    }
+                }
             }
         }
+        return null;
     }
 
-    private Weather readEntry(XmlPullParser parser) throws XmlPullParserException, IOException {
-        parser.require(XmlPullParser.START_TAG, ns, "entry");
-        String temperature = null;
-        String summary = null;
-        String link = null;
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            if (name.equals("temperature")) {
-                temperature = readTitle(parser);
-            } else if (name.equals("summary")) {
-                summary = readSummary(parser);
-            } else if (name.equals("link")) {
-                link = readLink(parser);
-            } else {
-                skip(parser);
-            }
+    private String pad(int num) {
+        if(num < 10) {
+            return "0" + num;
         }
-        return new Weather(temperature, summary, link);
-    }
-
-    // Processes temperature tags in the feed.
-    private String readTitle(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, ns, "temperature");
-        String temperature = readText(parser);
-        parser.require(XmlPullParser.END_TAG, ns, "temperature");
-        return temperature;
-    }
-
-    // Processes link tags in the feed.
-    private String readLink(XmlPullParser parser) throws IOException, XmlPullParserException {
-        String link = "";
-        parser.require(XmlPullParser.START_TAG, ns, "link");
-        String tag = parser.getName();
-        String relType = parser.getAttributeValue(null, "rel");
-        if (tag.equals("link")) {
-            if (relType.equals("alternate")) {
-                link = parser.getAttributeValue(null, "href");
-                parser.nextTag();
-            }
-        }
-        parser.require(XmlPullParser.END_TAG, ns, "link");
-        return link;
-    }
-
-    // Processes summary tags in the feed.
-    private String readSummary(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, ns, "summary");
-        String summary = readText(parser);
-        parser.require(XmlPullParser.END_TAG, ns, "summary");
-        return summary;
-    }
-
-    // For the tags temperature and summary, extracts their text values.
-    private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
-        String result = "";
-        if (parser.next() == XmlPullParser.TEXT) {
-            result = parser.getText();
-            parser.nextTag();
-        }
-        return result;
-    }
-
-
-    public class Weather {
-        public final String temperature;
-        public final String link;
-        public final String summary;
-
-        private Weather(String temperature, String summary, String link) {
-            this.temperature = temperature;
-            this.summary = summary;
-            this.link = link;
-        }
+        return String.valueOf(num);
     }
 }
