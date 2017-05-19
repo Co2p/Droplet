@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Droplet</string>
-
     <string name="credit">Weather forecast from YR, delivered by the Norwegian Meteorological Institute and NRK</string>
+    <string name="ok">Ok</string>
+    <string name="title_location_permission">Location Request</string>
+    <string name="text_location_permission">Droplet needs to see your location to work correctly</string>
 </resources>

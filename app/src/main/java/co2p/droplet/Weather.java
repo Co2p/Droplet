@@ -5,12 +5,16 @@ package co2p.droplet;
  */
 public class Weather {
     public final String temperature;
-    public final String wind;
-    public final String summary;
+    public final String windspeed;
+    public final String winddirection;
+    public final String time;
+    public final String area;
 
-    public Weather(String temperature, String summary, String wind) {
+    public Weather(String temperature, String windspeed, String winddirection, String time, String area) {
         this.temperature = temperature;
-        this.summary = summary;
-        this.wind = wind;
+        this.windspeed = windspeed;
+        this.winddirection = winddirection;
+        this.time = time;
+        this.area = area;
     }
 }
