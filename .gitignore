@@ -6,3 +6,13 @@
 /build
 /captures
 /Bak/Weather.java
+
+*.jks
+
+ic_launcher.png
+
+keystore.properties
+
+Banner.png
+
+app/app-release.apk
