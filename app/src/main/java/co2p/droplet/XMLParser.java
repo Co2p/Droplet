@@ -24,10 +24,9 @@ import javax.xml.parsers.ParserConfigurationException;
 public class XMLParser {
 
     public Weather parse(String xml) {
-        p.rint("PARSING");
-        String temperature = null;
-        String windspeed = null;
-        String winddir = null;
+        String temperature;
+        String windspeed;
+        String winddir;
 
         Document doc = getDOM(xml);
 

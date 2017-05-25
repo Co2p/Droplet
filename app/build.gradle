@@ -20,9 +20,12 @@ android {
         applicationId "co2p.droplet"
         minSdkVersion 20
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 103
+        versionName "1.0.3"
         signingConfig signingConfigs.config
+        jackOptions {
+            enabled true
+        }
     }
     buildTypes {
         release {
@@ -32,6 +35,10 @@ android {
         }
     }
     productFlavors {
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 }
 
