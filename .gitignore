@@ -1,10 +1,9 @@
 .gradle
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
 /build
 /captures
+<<<<<<< HEAD
 /Bak/Weather.java
 
 *.jks
@@ -16,3 +15,22 @@ keystore.properties
 Banner.png
 
 app/app-release.apk
+=======
+/Bak/*
+
+*.jks
+
+keystore.properties
+
+projectFilesBackup/.idea/*
+
+Banner.png
+
+ic_launcher.png
+
+app/app-release.apk
+
+.idea/*
+
+*.iml
+>>>>>>> Core-revamp

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Droplet</string>
+    <string name="celcius">°C</string>
+    <string name="credit">Data från MET Norge</string>
+    <string name="interneterror">Kan inte nå internet just nu</string>
+    <string name="locationerror">Kan inte hitta din position.</string>
+    <string name="ok">Ok</string>
+    <string name="text_location_permission">Droplet behöver veta din position för att kunna visa vädret</string>
+    <string name="title_location_permission">Position</string>
+</resources>
