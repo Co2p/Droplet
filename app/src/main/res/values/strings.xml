@@ -6,5 +6,12 @@
     <string name="text_location_permission">Droplet needs to see your location to work correctly</string>
     <string name="interneterror">Having trouble with the internet</string>
     <string name="locationerror">Can\'t find you, please enable location services.</string>
+    <string name="title_activity_swipe">Droplet</string>
+    <string name="action_settings">Settings</string>
+
     <string name="celcius">°C</string>
+    <string name="speed_meters_per_sec">m/s</string>
+    <string name="loading_weather">Loading weather</string>
+    <string name="airplanemode">Cannot connect to the internet, is the device in airplane mode?</string>
+
 </resources>

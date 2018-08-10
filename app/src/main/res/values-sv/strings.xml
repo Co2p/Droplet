@@ -8,4 +8,5 @@
     <string name="ok">Ok</string>
     <string name="text_location_permission">Droplet behöver veta din position för att kunna visa vädret</string>
     <string name="title_location_permission">Position</string>
+    <string name="loading_weather">Loading weather</string>
 </resources>
