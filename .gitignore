@@ -3,21 +3,6 @@
 .DS_Store
 /build
 /captures
-<<<<<<< HEAD
-/Bak/Weather.java
-
-*.jks
-
-ic_launcher.png
-
-keystore.properties
-
-Banner.png
-
-app/app-release.apk
-=======
-/Bak/*
-
 *.jks
 
 keystore.properties
@@ -33,4 +18,6 @@ app/app-release.apk
 .idea/*
 
 *.iml
->>>>>>> Core-revamp
+
+
+.idea/.name
